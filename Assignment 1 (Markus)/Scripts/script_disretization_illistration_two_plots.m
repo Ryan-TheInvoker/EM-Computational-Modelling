@@ -1,39 +1,42 @@
 clc
 
+%Notice: The subplot DO NOT RESPECT DEFAULT FONTS
+%It is maddening!!!!
+
 two_discretization_plots = figure(5);
 
-alpha0 = pi/4;
-freq   = 18e6;
+alpha0 = pi/5;
+freq   = 15.7e6;
 z_max  = 10*parameters.H;
 n      = @(z) index_of_refraction(parameters, z, freq);
 
 % Shared gray ramp: dark gray -> white
 ng = 256;
 g  = linspace(0.5, 1, ng)';
-cmap = [g g g];
+% Absolute gray ramp: 0 = black, 1 = white
+cmap = gray(256);          % or: g = linspace(0, 1, 256)'; cmap = [g g g];
 
 t = tiledlayout(1, 2, 'TileSpacing', 'compact', 'Padding', 'compact');
 
 ax1 = nexttile;
-r1 = trace_and_draw(ax1, parameters, n, freq, alpha0, z_max, 8);
-title(ax1, 'Discretized', 'Interpreter', 'latex');
-xlabel(ax1, 'Horizontal distance (km)', 'Interpreter', 'latex');
+r1 = trace_and_draw(ax1, parameters, n, freq, alpha0, z_max, 6);
+title(ax1, 'Discretized', 'Interpreter', 'latex', 'fontsize', 10);
+xlabel(ax1, 'Horizontal distance (km)', 'Interpreter', 'latex', 'fontsize', 10);
 
 ax2 = nexttile;
 r2 = trace_and_draw(ax2, parameters, n, freq, alpha0, z_max, 5000);
-title(ax2, 'Non-discretized', 'Interpreter', 'latex');
-xlabel(ax2, 'Horizontal distance (km)', 'Interpreter', 'latex');
+title(ax2, 'Continuous', 'Interpreter', 'latex', 'fontsize', 10);
+xlabel(ax2, 'Horizontal distance (km)', 'fontsize', 10);
 
 % Shared altitude axis
-ylabel(t, 'Altitude (km)', 'Interpreter', 'latex', 'fontsize', 9);
+ylabel(t, 'Altitude (km)', 'Interpreter', 'latex', 'fontsize', 10, fontname = 'Computer Modern');
 linkaxes([ax1 ax2], 'y');
 ax2.YTickLabel = [];
 
 % Shared color scale and colorbar
 colormap(t.Parent, cmap);
-clim_range = [min(r1(1), r2(1)), max(r1(2), r2(2))];
-clim(ax1, clim_range);
-clim(ax2, clim_range);
+clim(ax1, [0 1]);
+clim(ax2, [0 1]);
 
 c = colorbar(ax2);
 c.Layout.Tile = 'east';
@@ -41,6 +44,10 @@ c.Label.String = 'Index of refraction';
 c.Label.Interpreter = 'latex';
 c.Label.FontSize = 10;
 
+% Vector text/lines, raster gradient image
+two_discretization_plots.Units = 'centimeters';
+two_discretization_plots.Position(3:4) = [12 5.5];
+exportgraphics(two_discretization_plots, 'two_discretizations.png');
 % ---------------------------------------------------------------
 function range_n = trace_and_draw(ax, parameters, n, freq, alpha0, z_max, N)
     z = linspace(0, z_max, N);
@@ -69,7 +76,7 @@ function range_n = trace_and_draw(ax, parameters, n, freq, alpha0, z_max, N)
     axis(ax, 'tight');
     hold(ax, 'off');
 
+    axis equal
+
     range_n = [min(nc), max(nc)];
 end
-
-exportgraphics(two_discretization_plots, 'two_discretizations.png', 'Resolution', 500);

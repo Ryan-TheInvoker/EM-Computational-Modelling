@@ -1,5 +1,6 @@
 clc
 
+figure(5)
 
 %Initial conditions
 
@@ -40,7 +41,10 @@ if trace_back_to_ground
     z = [z, fliplr(z)];
 end
 
-%Plot code
+%Ray curve
+
+hold on;
+
 
 plot(x/1000,z/1000,   Color = 'black')
 xlabel('Horizontal distance (km)')
@@ -48,3 +52,4 @@ ylabel('Altitude (km)')
 title(sprintf('$\\alpha_0$ = %.1f$^\\circ$, $f$ = %.1f MHz', (180/pi)*alpha0, freq/1e6))
 grid on
 axis equal
+axis tight

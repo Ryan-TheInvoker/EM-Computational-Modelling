@@ -56,21 +56,27 @@ disp(' ');
 %note to self: compute peak parameters here as well
 
 
+fs = 10;
+set(groot, 'defaultAxesFontSize',   fs);
+set(groot, 'defaultTextFontSize',   fs);
+set(groot, 'defaultLegendFontSize', fs);
+set(groot, 'defaultColorbarFontSize', fs);
+set(groot, 'defaultAxesTitleFontSizeMultiplier', 1);
+set(groot, 'defaultAxesLabelFontSizeMultiplier', 1);
+
 
 set(groot, 'DefaultFigureUnits', 'centimeters');
-%set(groot, 'DefaultFigurePosition', [10, 10, 6,6]); % [left, bottom, width, height]
+set(groot, 'defaultFigurePosition', [10 10 12 8]);   % 11 cm wide, 6 cm tall
 set(groot, 'DefaultAxesFontName', 'Computer Modern'); %default LaTeX font
 set(groot, 'defaultTextInterpreter',          'latex');
 set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
 set(groot, 'defaultLegendInterpreter',        'latex');
 
 set(groot, 'defaultColorbarTickLabelInterpreter', 'latex');
-
-set(groot, 'defaultAxesFontSize',     10);
-set(groot, 'defaultTextFontSize',     10);
-set(groot, 'defaultLegendFontSize',   10);
-set(groot, 'defaultColorbarFontSize', 10);
 set(groot, 'DefaultLineLineWidth', 1);
 set(groot, 'DefaultAxesXGrid', 'on');
 set(groot, 'DefaultAxesYGrid', 'on');
 set(groot, 'DefaultAxesZGrid', 'on');
+
+set(groot, 'defaultAxesTitleFontSizeMultiplier', 1);
+set(groot, 'defaultAxesLabelFontSizeMultiplier', 1);
