@@ -6,7 +6,9 @@ setup_global_parameters;
 
 multiplier = [1,5,10]
 I0_vals = [parameters.I0, parameters.I0, parameters.I0].*multiplier;
-%check that nothing else needs to be updated
+
+%This renders the atmosphere model insoncistent so be careful
+
 line_styles = ["-";":";"--"];
 
 
