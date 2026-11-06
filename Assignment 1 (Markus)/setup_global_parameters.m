@@ -66,7 +66,7 @@ set(groot, 'defaultAxesLabelFontSizeMultiplier', 1);
 
 
 set(groot, 'DefaultFigureUnits', 'centimeters');
-set(groot, 'defaultFigurePosition', [10 10 12 8]);   % 11 cm wide, 6 cm tall
+set(groot, 'defaultFigurePosition', [10 10 12 8]);
 set(groot, 'DefaultAxesFontName', 'Computer Modern'); %default LaTeX font
 set(groot, 'defaultTextInterpreter',          'latex');
 set(groot, 'defaultAxesTickLabelInterpreter', 'latex');
