@@ -1,5 +1,5 @@
 clc
-
+clf
 figure(5)
 
 %Initial conditions
@@ -7,7 +7,7 @@ figure(5)
 alpha0 = pi/4;
 x0 = 0;
 z0 = 0;
-freq = 14e6
+freq = 10e6
 
 sinalpha0 = sin(alpha0)
 
@@ -17,13 +17,13 @@ zmax = parameters.alt*3;
 %cannot reverse direction. If you want to trace back to ground
 %but appending a mirror set the parameter below to true
 
-trace_back_to_ground = true;
+trace_back_to_ground = false;
 
 %Number of layers
-N = 100000
+N = 1000000
 
 
-%Computes the altitude at which
+%Computes the altitude at which ray becomes horizontal
 zrefl = altitude_of_reflection(z0, sinalpha0,freq, parameters)
 
 if zrefl == Inf
