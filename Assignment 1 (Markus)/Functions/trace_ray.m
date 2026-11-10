@@ -7,7 +7,7 @@ dz = diff(z);
 
 sinalpha = index_of_refraction(parameters, z0, freq) * sinalpha0 ./ index_of_refraction(parameters, zavg, freq);
 
-dx = dz.*sinalpha0./sqrt(1 - sinalpha.^2);
+dx = dz.*sinalpha./sqrt(1 - sinalpha.^2);
 
 x(2:end) = x0 + cumsum(dx);
 sinalpha = [sinalpha0, sinalpha];

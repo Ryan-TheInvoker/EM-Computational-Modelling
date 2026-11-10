@@ -36,7 +36,6 @@ zmax = min(zrefl, zmax);
 
 
 if trace_back_to_ground
-    [x,z,sinalpha] = trace_ray(x0, z0, zmax, sinalpha0, freq, N, parameters);
     x = [x, 2*x(end) - fliplr(x)];   % stitch onto symmetry
     z = [z, fliplr(z)];
 end
