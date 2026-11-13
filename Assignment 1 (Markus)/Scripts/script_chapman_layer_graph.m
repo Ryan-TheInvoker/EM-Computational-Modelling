@@ -20,12 +20,24 @@ electron_plasma_frequency_max = maxval;
 %Generate double y-axis graps for
 %density and frequency
 
+
+
+set(0,'DefaultAxesFontSize', 11);
+set(0,'DefaultFigureColor','w');
+set(0,'defaulttextinterpreter','tex');
+set(0,'DefaultAxesFontName','times');
+set(0,'DefaultLineLineWidth', 1.2);
+set(0,'defaultAxesLabelFontSizeMultiplier', 1.1);
+
 dual_fig = figure(2);
+set(gcf, 'Units', 'centimeters')
+set(gcf, 'Position', [0 0 8.89 6])
 yyaxis left
 plot(z_range/1000,electron_density_profile, ...
     DisplayName = "Plasma density", ...
     Color='black', LineStyle ='-');
-ylabel("Plasma density (m^{-3})")
+yticks([0 0.5e12 1e12 1.5e12 2e12])
+ylabel("Plasma density (m^{-3})", FontSize=14)
 
 ax = gca;
 ax.YColor = 'black';
@@ -34,14 +46,14 @@ yyaxis right
 plot(z_range/1000, electron_plasma_frequency_profile/1e6, ...
     DisplayName = "Electron plasma frequency", ...
     Color='black', LineStyle =':');
-ylabel("Electron plasma frequency (MHz)")
-xlabel("Altitude (km)")
+ylabel("Electron plasma frequency (MHz)", FontSize=14)
+xlabel("Altitude (km)", FontSize=14)
 legend show
 
 ax = gca;
 ax.YColor = 'black';
 
-title("Chapman layer")
+%title("Chapman layer")
 legend show;
 
 disp(" ")
