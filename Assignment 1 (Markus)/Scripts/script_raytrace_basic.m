@@ -7,7 +7,7 @@ figure(5)
 alpha0 = pi/4;
 x0 = 0;
 z0 = 0;
-freq = 10e6
+freq = parameters.f
 
 sinalpha0 = sin(alpha0)
 
@@ -17,7 +17,7 @@ zmax = parameters.alt*3;
 %cannot reverse direction. If you want to trace back to ground
 %but appending a mirror set the parameter below to true
 
-trace_back_to_ground = false;
+trace_back_to_ground = true;
 
 %Number of layers
 N = 1000000

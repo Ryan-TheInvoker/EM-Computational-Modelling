@@ -1,8 +1,21 @@
 clc
 clf
-figure('Position', [0, 0, 12, 8]);
+
 
 setup_global_parameters;
+
+set(0,'DefaultAxesFontSize', 11);
+set(0,'DefaultFigureColor','w');
+set(0,'defaulttextinterpreter','tex');
+set(0,'DefaultAxesFontName','times');
+set(0,'DefaultLineLineWidth', 1.2);
+set(0,'defaultAxesLabelFontSizeMultiplier', 1.1);
+set(0, 'DefaultAxesTickLabelInterpreter', 'tex')
+
+figure('Position', [0, 0, 12, 8]);
+
+set(gcf, 'Units', 'centimeters')
+set(gcf, 'Position', [0 0 8.89 6])
 
 multiplier = [1,5,10]
 I0_vals = [parameters.I0, parameters.I0, parameters.I0].*multiplier;
@@ -72,8 +85,10 @@ for k = [1,2,3]
     legend show
 
     axis equal
-    axis tight
+    %axis tight
 
 end
 
-
+axis([0 400 0 250])
+xticks([0 100 200 300 400])
+yticks([0 50 100 150 200 250])

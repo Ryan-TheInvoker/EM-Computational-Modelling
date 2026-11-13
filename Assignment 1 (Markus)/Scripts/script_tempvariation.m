@@ -1,8 +1,22 @@
 clc
 clf
+setup_global_parameters;
+
+
+
+set(0,'DefaultAxesFontSize', 11);
+set(0,'DefaultFigureColor','w');
+set(0,'defaulttextinterpreter','tex');
+set(0,'DefaultAxesFontName','times');
+set(0,'DefaultLineLineWidth', 1.2);
+set(0,'defaultAxesLabelFontSizeMultiplier', 1.1);
+set(0, 'DefaultAxesTickLabelInterpreter', 'tex')
+
 figure('Position', [0, 0, 12, 8]);
 
-setup_global_parameters;
+set(gcf, 'Units', 'centimeters')
+set(gcf, 'Position', [0 0 8.89 6])
+
 
 temp_vals = [parameters.T, parameters.T+100, parameters.T + 200];
 H_vals = parameters.kB * temp_vals / (parameters.mO * parameters.g);
@@ -65,13 +79,18 @@ for k = [1,2,3]
     hold on
     xlabel('Horizontal distance (km)')
     ylabel('Altitude (km)')
-    title(sprintf('$\\alpha_0$ = %.1f$^\\circ$, $f$ = %.1f MHz', (180/pi)*alpha0, freq/1e6))
+    %title(sprintf('$\\alpha_0$ = %.1f$^\\circ$, $f$ = %.1f MHz', (180/pi)*alpha0, freq/1e6))
     grid on
     legend show
     
     axis equal
-    axis tight
+    %axis tight
+    
 
 end
+axis([0 500 0 300])
+xticks([0 100 200 300 400 500])
+yticks([0 100 200 300])
+
 
 
