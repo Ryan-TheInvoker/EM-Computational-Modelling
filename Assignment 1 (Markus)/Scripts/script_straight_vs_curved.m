@@ -1,4 +1,4 @@
-clc
+
 clf
 
 set(0,'DefaultAxesFontSize', 11);
@@ -20,7 +20,7 @@ x0 = 0;
 z0 = 0;
 freq = parameters.f;
 
-sinalpha0 = sin(alpha0)
+sinalpha0 = sin(alpha0);
 
 zmax = parameters.alt*3;
 
@@ -30,12 +30,11 @@ zmax = parameters.alt*3;
 
 trace_back_to_ground = true;
 
-%Number of layers
-N = 1000000;
-
+%Number of layers (note at 1000000000 it eats all my ram)
+N = 100000000;
 
 %Computes the altitude at which ray becomes horizontal
-zrefl = altitude_of_reflection(z0, sinalpha0,freq, parameters)
+zrefl = altitude_of_reflection(z0, sinalpha0,freq, parameters);
 
 if zrefl == Inf
     trace_back_to_ground = false;
@@ -68,8 +67,14 @@ y_straight = [0,zmax, 0]/1000;
 x_straight = [0,zmax*tan(alpha0), 2*zmax*tan(alpha0)]/1000;
 plot(x_straight, y_straight, Color = 'black', LineStyle=':', DisplayName = 'Estimate')
 axis([0 400 0 250])
-disp('here it comes!')
+
+disp(' ')
+disp('Using ' + string(N) + ' layers we get')
 disp('Height ' + string(zmax/1000) + " km" )
+disp('xmax ' + string(x(end)/1000) + " km" )
+
+
+disp('Alfamax ' + string(asin(sinalpha(end))*(180/pi)) + " deg" )
 
 axis equal
 axis([0 400 0 250])

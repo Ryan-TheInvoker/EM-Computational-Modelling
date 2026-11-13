@@ -31,7 +31,7 @@ hold(ax1, 'on')
 draw_image(ax1, n, z_max, x_w, Nimg);
 plot(ax1, x_c/1000, z_c/1000, 'k:', 'LineWidth', 1);
 plot(ax1, seg1_x, seg1_z, 'k', 'LineWidth', 1.5);
-style_axes(ax1, '(a) Target');
+style_axes(ax1, '(a)');
 ylabel(ax1, 'Altitude (km)', 'Interpreter', 'latex', 'fontsize', 10);
 
 % 2) Discretization: layers plus the first segment (top right)
@@ -39,7 +39,7 @@ ax2 = nexttile;
 hold(ax2, 'on')
 draw_layers(ax2, n, z_d, x_w);
 plot(ax2, seg1_x, seg1_z, 'k', 'LineWidth', 1.5);
-style_axes(ax2, '(b) Discretization');
+style_axes(ax2, '(b)');
 
 % 3) Construct orientation: layers plus ray segments, each starting at x = 0 (bottom left)
 %    The first segment is the first of these, so it is already included.
@@ -50,7 +50,7 @@ Nseg = numel(dx);
 Xs = [zeros(1, Nseg); dx;         nan(1, Nseg)];   % segment k: (0, z_k) -> (dx_k, z_k+1)
 Zs = [z_d(1:end-1);   z_d(2:end); nan(1, Nseg)];
 plot(ax3, Xs(:)/1000, Zs(:)/1000, 'k', 'LineWidth', 1.5);
-style_axes(ax3, '(c) Construct');
+style_axes(ax3, '(c)');
 xlabel(ax3, 'Horizontal distance (km)', 'Interpreter', 'latex', 'fontsize', 10);
 ylabel(ax3, 'Altitude (km)', 'Interpreter', 'latex', 'fontsize', 10);
 
@@ -60,7 +60,7 @@ ax4 = nexttile;
 hold(ax4, 'on')
 draw_layers(ax4, n, z_d, x_w);
 plot(ax4, x_d/1000, z_d/1000, 'k', 'LineWidth', 1.5);
-style_axes(ax4, '(d) Stitch');
+style_axes(ax4, '(d)');
 xlabel(ax4, 'Horizontal distance (km)', 'Interpreter', 'latex', 'fontsize', 10);
 
 % ---- Shared color scale and colorbar ----
